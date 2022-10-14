@@ -36,5 +36,5 @@ print(valid) # this return object re.Match
 text = "Is closed on Monday and Tuesday"
 search = re.search(r"monday|tuesday", text)
 print(search) # this return object re.Match
-
+# ^ For start of string
 pattern = r'[^\s]+]' # similar to split(" ")
