@@ -1,0 +1,14 @@
+for activate: source ./name/bin/activate
+
+for desactivate: only type "deactivate"
+
+----
+for install django: pip3 install django
+
+> mkdir src
+> cd src
+> django-admin startproject name
+> cd name
+> python3 manage.py runserver
+> python3 manage.py migrate
+> python3 manage.py createsuperuser
