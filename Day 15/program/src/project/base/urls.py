@@ -1,4 +1,4 @@
 from django.urls import path
-from . import views
+from .views import PendingList
 
-urlpatterns = [path('', views.list_pending, name='pendings')]
+urlpatterns = [path('', PendingList.as_view(), name='pendings')]

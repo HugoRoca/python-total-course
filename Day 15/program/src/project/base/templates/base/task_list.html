@@ -1,0 +1,16 @@
+<h1>Pending List</h1>
+
+<table>
+    <tr>
+        <th>Item</th>
+    </tr>
+
+    {% for task in tasks %}
+    <p>as</p>
+    <tr>
+        <td>{{task.title}}</td>
+    </tr>
+    {% empty %}
+    <h3>There is not data</h3>
+    {% endfor %}
+</table>
