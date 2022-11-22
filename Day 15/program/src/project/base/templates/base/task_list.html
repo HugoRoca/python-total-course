@@ -1,27 +1,36 @@
-{% if request.user.is_authenticated %}
-    <p>{{ request.user }}</p>
-    <a href="{% url 'logout' %}">Logout</a>
-{% else %}
-    <a href="{% url 'login' %}">Signin</a>
-{% endif %}
+{% extends 'base/main.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <p>{{ request.user }}</p>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Signin</a>
+    {% endif %}
 
-<h1>Pending List</h1>
-<a href="{% url 'create-task' %}">New task</a>
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-        <th></th>
-    </tr>
+    <h1>Pending List</h1>
+    <a href="{% url 'create-task' %}">New task</a>
 
-    {% for task in tasks %}
-    <tr>
-        <td>{{task.title}}</td>
-        <td><a href="{% url 'task' task.id %}">See more</a></td>
-        <td><a href="{% url 'edit-task' task.id %}">Edit</a></td>
-        <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
-    </tr>
-    {% empty %}
-    <h3>There is not data</h3>
-    {% endfor %}
-</table>
+    <form method="get">
+        <input type="text" name="boxSearch" value="{{ search_value }}"/>
+        <input type="submit" value="Search"/>
+    </form>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.title}}</td>
+    {#        <td><a href="{% url 'task' task.id %}">See more</a></td>#}
+            <td><a href="{% url 'edit-task' task.id %}">Edit</a></td>
+            <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
+        </tr>
+        {% empty %}
+        <h3>There is not data</h3>
+        {% endfor %}
+    </table>
+{% endblock content %}

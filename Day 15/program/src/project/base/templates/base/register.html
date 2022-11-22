@@ -1,6 +1,6 @@
 {% extends 'base/main.html' %}
 {% block content %}
-    <h1>Signin</h1>
+    <h1>Signup</h1>
 
     <form method="post">
         {% csrf_token %}
@@ -8,5 +8,5 @@
         <input type="submit" value="Signin"/>
     </form>
 
-    <p>Don;t have account? <a href="{% url 'register' %}">Signup</a></p>
+    <p>You have account? <a href="{% url 'login' %}">Signin</a></p>
 {% endblock content %}
