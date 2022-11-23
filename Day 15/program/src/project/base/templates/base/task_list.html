@@ -1,11 +1,16 @@
 {% extends 'base/main.html' %}
 {% block content %}
-    {% if request.user.is_authenticated %}
-        <p>{{ request.user }}</p>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Signin</a>
-    {% endif %}
+    <div class="top-bar">
+        <div>
+            <h1>Hi, {{ request.user | title }}</h1>
+            <h3 style="margin: 0">You have <i>{{ count }}</i> pending task{{ count | pluralize }}</h3>
+        </div>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Signin</a>
+        {% endif %}
+    </div>
 
     <h1>Pending List</h1>
     <a href="{% url 'create-task' %}">New task</a>
