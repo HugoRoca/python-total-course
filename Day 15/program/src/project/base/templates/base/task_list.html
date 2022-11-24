@@ -12,30 +12,34 @@
         {% endif %}
     </div>
 
-    <h1>Pending List</h1>
-    <a href="{% url 'create-task' %}">New task</a>
+{#    <a href="{% url 'create-task' %}">New task</a>#}
+{##}
+{#    <form method="get">#}
+{#        <input type="text" name="boxSearch" value="{{ search_value }}"/>#}
+{#        <input type="submit" value="Search"/>#}
+{#    </form>#}
 
-    <form method="get">
-        <input type="text" name="boxSearch" value="{{ search_value }}"/>
-        <input type="submit" value="Search"/>
-    </form>
-
-    <table>
-        <tr>
-            <th>Item</th>
-            <th></th>
-            <th></th>
-        </tr>
-
+    <div class="envolt-item-tasks">
         {% for task in tasks %}
-        <tr>
-            <td>{{task.title}}</td>
-    {#        <td><a href="{% url 'task' task.id %}">See more</a></td>#}
-            <td><a href="{% url 'edit-task' task.id %}">Edit</a></td>
-            <td><a href="{% url 'delete-task' task.id %}">Delete</a></td>
-        </tr>
-        {% empty %}
-        <h3>There is not data</h3>
+        <div class="envolt-task">
+            {% if task.complete %}
+                <div class="title-task">
+                    <div class="icon-task-complete"></div>
+                    <i><s><a href="{% url 'edit-task' task.id %}">{{ task }}</a></s></i>
+                </div>
+                <a class="link-delete" href="{% url 'delete-task' task.id %}">
+                &#x2A2F;
+                </a>
+            {% else %}
+                <div class="title-task">
+                    <div class="icon-task-incomplete"></div>
+                    <a href="{% url 'edit-task' task.id %}">{{ task }}</a>
+                </div>
+                <a class="link-delete" href="{% url 'delete-task' task.id %}">
+                &#x2A2F;
+                </a>
+            {% endif %}
+        </div>
         {% endfor %}
-    </table>
+    </div>
 {% endblock content %}
