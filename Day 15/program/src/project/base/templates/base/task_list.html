@@ -12,12 +12,13 @@
         {% endif %}
     </div>
 
-{#    <a href="{% url 'create-task' %}">New task</a>#}
-{##}
-{#    <form method="get">#}
-{#        <input type="text" name="boxSearch" value="{{ search_value }}"/>#}
-{#        <input type="submit" value="Search"/>#}
-{#    </form>#}
+    <div class="envolt-add-find">
+        <form method="get" style="display: flex;">
+            <input type="text" name="boxSearch" value="{{ search_value }}"/>
+            <input class="btn-input" type="submit" value="Search"/>
+        </form>
+        <a id="link-btn-add" href="{% url 'create-task' %}">&#xFF0B;</a>
+    </div>
 
     <div class="envolt-item-tasks">
         {% for task in tasks %}

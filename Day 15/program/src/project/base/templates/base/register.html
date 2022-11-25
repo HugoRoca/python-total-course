@@ -1,12 +1,23 @@
 {% extends 'base/main.html' %}
 {% block content %}
-    <h1>Signup</h1>
+    <div class="top-bar">
+        <h1>Signup</h1>
+    </div>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Signin"/>
-    </form>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <label>{{ form.username.label }}</label>
+            {{ form.username }}
+            <label>{{ form.password1.label }}</label>
+            {{ form.password1 }}
+            <label>{{ form.password2.label }}</label>
+            {{ form.password2 }}
 
-    <p>You have account? <a href="{% url 'login' %}">Signin</a></p>
+{#            {{ form.as_p }}#}
+
+            <input style="margin-top: 10px" class="btn-input" type="submit" value="Signin"/>
+        </form>
+        <p>You have account? <a href="{% url 'login' %}">Signin</a></p>
+    </div>
 {% endblock content %}
